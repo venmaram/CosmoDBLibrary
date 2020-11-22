@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "qTUvyhvd985I8Lfn3wx4zG7FZ6N5/sWXDAySx8uBNdk5Jn8iBamjTIRuanMH2+Vqlnd1zGAV1/wFIiWAcfWW3g==",
+  "success": true,
+  "projectFilePath": "C:\\ven\\cosmodb\\genericCosmoDB_library\\CosmoDBLibrary\\ViewModel\\ViewModel.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vmaram.DOMAIN\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,14 @@
+C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\CosmoDBLibrary\bin\Debug\netcoreapp3.1\CosmoDBLibrary.deps.json
+C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\CosmoDBLibrary\bin\Debug\netcoreapp3.1\CosmoDBLibrary.dll
+C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\CosmoDBLibrary\bin\Debug\netcoreapp3.1\CosmoDBLibrary.pdb
+C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\CosmoDBLibrary\obj\Debug\netcoreapp3.1\CosmoDBLibrary.csprojAssemblyReference.cache
+C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\CosmoDBLibrary\obj\Debug\netcoreapp3.1\CosmoDBLibrary.AssemblyInfoInputs.cache
+C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\CosmoDBLibrary\obj\Debug\netcoreapp3.1\CosmoDBLibrary.AssemblyInfo.cs
+C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\CosmoDBLibrary\obj\Debug\netcoreapp3.1\CosmoDBLibrary.dll
+C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\CosmoDBLibrary\obj\Debug\netcoreapp3.1\CosmoDBLibrary.pdb
+C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\CosmoDBLibrary\bin\Debug\netcoreapp3.1\Microsoft.Azure.Cosmos.ServiceInterop.dll
+C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\CosmoDBLibrary\bin\Debug\netcoreapp3.1\Cosmos.CRTCompat.dll
+C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\CosmoDBLibrary\obj\Debug\netcoreapp3.1\CosmoDBLibrary.csproj.CoreCompileInputs.cache
+C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\CosmoDBLibrary\bin\Debug\netcoreapp3.1\ViewModel.dll
+C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\CosmoDBLibrary\bin\Debug\netcoreapp3.1\ViewModel.pdb
+C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\CosmoDBLibrary\obj\Debug\netcoreapp3.1\CosmoDBLibrary.csproj.CopyComplete
