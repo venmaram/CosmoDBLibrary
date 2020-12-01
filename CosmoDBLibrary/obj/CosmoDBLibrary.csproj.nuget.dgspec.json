@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ven\\cosmodb\\genericCosmoDB_library\\CosmoDBLibrary\\CosmoDBLibrary\\CosmoDBLibrary.csproj": {}
+    "C:\\ven\\cosmodb\\CosmoDBLibrary\\CosmoDBLibrary\\CosmoDBLibrary.csproj": {}
   },
   "projects": {
-    "C:\\ven\\cosmodb\\genericCosmoDB_library\\CosmoDBLibrary\\CosmoDBLibrary\\CosmoDBLibrary.csproj": {
+    "C:\\ven\\cosmodb\\CosmoDBLibrary\\CosmoDBLibrary\\CosmoDBLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ven\\cosmodb\\genericCosmoDB_library\\CosmoDBLibrary\\CosmoDBLibrary\\CosmoDBLibrary.csproj",
+        "projectUniqueName": "C:\\ven\\cosmodb\\CosmoDBLibrary\\CosmoDBLibrary\\CosmoDBLibrary.csproj",
         "projectName": "CosmoDBLibrary",
-        "projectPath": "C:\\ven\\cosmodb\\genericCosmoDB_library\\CosmoDBLibrary\\CosmoDBLibrary\\CosmoDBLibrary.csproj",
+        "projectPath": "C:\\ven\\cosmodb\\CosmoDBLibrary\\CosmoDBLibrary\\CosmoDBLibrary.csproj",
         "packagesPath": "C:\\Users\\vmaram.DOMAIN\\.nuget\\packages\\",
-        "outputPath": "C:\\ven\\cosmodb\\genericCosmoDB_library\\CosmoDBLibrary\\CosmoDBLibrary\\obj\\",
+        "outputPath": "C:\\ven\\cosmodb\\CosmoDBLibrary\\CosmoDBLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -33,8 +33,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\ven\\cosmodb\\genericCosmoDB_library\\CosmoDBLibrary\\ViewModel\\ViewModel.csproj": {
-                "projectPath": "C:\\ven\\cosmodb\\genericCosmoDB_library\\CosmoDBLibrary\\ViewModel\\ViewModel.csproj"
+              "C:\\ven\\cosmodb\\CosmoDBLibrary\\ViewModel\\ViewModel.csproj": {
+                "projectPath": "C:\\ven\\cosmodb\\CosmoDBLibrary\\ViewModel\\ViewModel.csproj"
               }
             }
           }
@@ -72,14 +72,14 @@
         }
       }
     },
-    "C:\\ven\\cosmodb\\genericCosmoDB_library\\CosmoDBLibrary\\ViewModel\\ViewModel.csproj": {
+    "C:\\ven\\cosmodb\\CosmoDBLibrary\\ViewModel\\ViewModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ven\\cosmodb\\genericCosmoDB_library\\CosmoDBLibrary\\ViewModel\\ViewModel.csproj",
+        "projectUniqueName": "C:\\ven\\cosmodb\\CosmoDBLibrary\\ViewModel\\ViewModel.csproj",
         "projectName": "ViewModel",
-        "projectPath": "C:\\ven\\cosmodb\\genericCosmoDB_library\\CosmoDBLibrary\\ViewModel\\ViewModel.csproj",
+        "projectPath": "C:\\ven\\cosmodb\\CosmoDBLibrary\\ViewModel\\ViewModel.csproj",
         "packagesPath": "C:\\Users\\vmaram.DOMAIN\\.nuget\\packages\\",
-        "outputPath": "C:\\ven\\cosmodb\\genericCosmoDB_library\\CosmoDBLibrary\\ViewModel\\obj\\",
+        "outputPath": "C:\\ven\\cosmodb\\CosmoDBLibrary\\ViewModel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

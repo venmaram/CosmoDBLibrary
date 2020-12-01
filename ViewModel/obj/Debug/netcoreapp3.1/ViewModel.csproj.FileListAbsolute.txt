@@ -7,3 +7,12 @@ C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\ViewModel\obj\Debug\netcore
 C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\ViewModel\obj\Debug\netcoreapp3.1\ViewModel.dll
 C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\ViewModel\obj\Debug\netcoreapp3.1\ViewModel.pdb
 C:\ven\cosmodb\genericCosmoDB_library\CosmoDBLibrary\ViewModel\obj\Debug\netcoreapp3.1\ViewModel.csprojAssemblyReference.cache
+C:\ven\cosmodb\CosmoDBLibrary\ViewModel\bin\Debug\netcoreapp3.1\ViewModel.deps.json
+C:\ven\cosmodb\CosmoDBLibrary\ViewModel\bin\Debug\netcoreapp3.1\ViewModel.dll
+C:\ven\cosmodb\CosmoDBLibrary\ViewModel\bin\Debug\netcoreapp3.1\ViewModel.pdb
+C:\ven\cosmodb\CosmoDBLibrary\ViewModel\obj\Debug\netcoreapp3.1\ViewModel.AssemblyInfoInputs.cache
+C:\ven\cosmodb\CosmoDBLibrary\ViewModel\obj\Debug\netcoreapp3.1\ViewModel.AssemblyInfo.cs
+C:\ven\cosmodb\CosmoDBLibrary\ViewModel\obj\Debug\netcoreapp3.1\ViewModel.csproj.CoreCompileInputs.cache
+C:\ven\cosmodb\CosmoDBLibrary\ViewModel\obj\Debug\netcoreapp3.1\ViewModel.dll
+C:\ven\cosmodb\CosmoDBLibrary\ViewModel\obj\Debug\netcoreapp3.1\ViewModel.pdb
+C:\ven\cosmodb\CosmoDBLibrary\ViewModel\obj\Debug\netcoreapp3.1\ViewModel.csprojAssemblyReference.cache

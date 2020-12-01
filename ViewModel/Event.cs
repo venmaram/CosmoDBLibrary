@@ -16,4 +16,20 @@ namespace ViewModel
         }
 
     }
+
+    public class party
+    {
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+
+        public string Name { get; set; }
+        public string Description { get; set; }
+
+        public int count { get; set; }
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+
+    }
 }

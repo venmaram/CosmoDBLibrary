@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Runtime.Serialization.Json;
 using System.Text;
@@ -10,6 +11,147 @@ using ViewModel;
 
 namespace CosmoDBLibrary
 {
+   
+
+
+
+    public interface IWriteOnlyRepository<in T> : IDisposable
+    {
+         Task AddItemsToContainerAsync(T eve,string key);
+        Task DeleteItemAsync(string partitionKeyValue, string Id);
+        Task UpdateItemAsync(string partitionKeyValue, string Id);
+
+    }
+
+
+
+    //public interface IReadOnlyRepository<out T> : IDisposable
+    //{
+    //    // Task<List<T>> ReadItemsAsync(string name);
+    //}
+
+    public interface IRepository<T> :  IWriteOnlyRepository<T>
+    {
+
+    }
+    public class CosmoDBRepository<T> : IRepository<T> where T : class
+    {
+        // The Azure Cosmos DB endpoint for running this sample.
+        private static readonly string EndpointUri = "https://localhost:8081";//ConfigurationManager.AppSettings["EndPointUri"];
+
+        // The primary key for the Azure Cosmos account.
+        private static readonly string PrimaryKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
+
+        // The Cosmos client instance
+        private CosmosClient cosmosClient;
+
+        // The database we will create
+        private Database database;
+
+        // The container we will create.
+        private Container container;
+
+        // The name of the database and container we will create
+        private string databaseId = "Tasks";
+        private string containerId = "event";
+        public async Task AddItemsToContainerAsync(T eve,string key)
+        {
+            this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions() { ApplicationName = "CosmosDBDotnetQuickstart" });
+            this.database = await this.cosmosClient.CreateDatabaseIfNotExistsAsync(databaseId);
+            this.container = await this.database.CreateContainerIfNotExistsAsync(containerId, "/Name", 400);
+            ItemResponse<T> eve_Response = await this.container.CreateItemAsync<T>(eve, new PartitionKey(key));
+        }
+
+        public void Dispose()
+        {
+            //Dispose of CosmosClient
+            this.cosmosClient.Dispose();
+        }
+
+
+
+        public async Task DeleteItemAsync(string partitionKeyValue, string Id)
+        {
+            this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions() { ApplicationName = "CosmosDBDotnetQuickstart" });
+            this.database = await this.cosmosClient.CreateDatabaseIfNotExistsAsync(databaseId);
+            this.container = await this.database.CreateContainerIfNotExistsAsync(containerId, "/Name", 400);
+            ItemResponse<T> wakefieldFamilyResponse = await this.container.DeleteItemAsync<T>(Id, new PartitionKey(partitionKeyValue));
+        }
+
+        public async Task UpdateItemAsync(string partitionKeyValue, string Id)
+        {
+            this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions() { ApplicationName = "CosmosDBDotnetQuickstart" });
+            this.database = await this.cosmosClient.CreateDatabaseIfNotExistsAsync(databaseId);
+            this.container = await this.database.CreateContainerIfNotExistsAsync(containerId, "/Name", 400);
+            ItemResponse<T> wakefieldFamilyResponse = await this.container.ReadItemAsync<T>(Id, new PartitionKey(partitionKeyValue));
+            var itemBody = wakefieldFamilyResponse.Resource;
+
+            var stringProps = wakefieldFamilyResponse.GetType().GetProperties().Where(p => p.PropertyType == typeof(string));
+
+            //itemBody. = "Update the event description";
+
+            //wakefieldFamilyResponse = await this.container.ReplaceItemAsync<Event>(itemBody, itemBody.Id, new PartitionKey(itemBody.Name));
+        }
+
+
+        public async Task<List<T>> ReadItemsAsync(string name)
+        {
+            this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions() { ApplicationName = "CosmosDBDotnetQuickstart" });
+            this.database = await this.cosmosClient.CreateDatabaseIfNotExistsAsync(databaseId);
+            this.container = await this.database.CreateContainerIfNotExistsAsync(containerId, "/Name", 400);
+            var sqlQueryText = "SELECT * FROM c WHERE c.Name = '" + name + "'";
+
+
+            QueryDefinition queryDefinition = new QueryDefinition(sqlQueryText);
+            FeedIterator<T> queryResultSetIterator = this.container.GetItemQueryIterator<T>(queryDefinition);
+            List<T> list = new List<T>();
+            while (queryResultSetIterator.HasMoreResults)
+            {
+                FeedResponse<T> currentResultSet = await queryResultSetIterator.ReadNextAsync();
+                foreach (T eves in currentResultSet)
+                {
+                    list.Add(eves);
+                }
+            }
+
+            return list;
+        }
+
+
+        public async Task DeleteDatabaseAndCleanupAsync()
+        {
+            this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions() { ApplicationName = "CosmosDBDotnetQuickstart" });
+            this.database = await this.cosmosClient.CreateDatabaseIfNotExistsAsync(databaseId);
+            this.container = await this.database.CreateContainerIfNotExistsAsync(containerId, "/Name", 400);
+            DatabaseResponse databaseResourceResponse = await this.database.DeleteAsync();
+
+            //Dispose of CosmosClient
+            this.cosmosClient.Dispose();
+        }
+
+        public static string Serialize<T>(T obj)
+        {
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(obj.GetType());
+            MemoryStream ms = new MemoryStream();
+            serializer.WriteObject(ms, obj);
+            string retVal = Encoding.UTF8.GetString(ms.ToArray());
+            return retVal;
+        }
+
+        public static T Deserialize<T>(string json)
+        {
+            T obj = Activator.CreateInstance<T>();
+            MemoryStream ms = new MemoryStream(Encoding.Unicode.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(obj.GetType());
+            obj = (T)serializer.ReadObject(ms);
+            ms.Close();
+            return obj;
+        }
+
+
+    }
+
+    #region cosmoDBDriver with out generics
     public class CosmoDBDriver
     {
         // The Azure Cosmos DB endpoint for running this sample.
@@ -31,7 +173,7 @@ namespace CosmoDBLibrary
         private string databaseId = "Tasks";
         private string containerId = "event";
 
-        public  CosmoDBDriver()
+        public CosmoDBDriver()
         {
             //connection();
         }
@@ -46,7 +188,7 @@ namespace CosmoDBLibrary
 
         }
 
-       
+
 
         private async Task CreateDatabaseAsync()
         {
@@ -118,7 +260,7 @@ namespace CosmoDBLibrary
             this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions() { ApplicationName = "CosmosDBDotnetQuickstart" });
             this.database = await this.cosmosClient.CreateDatabaseIfNotExistsAsync(databaseId);
             this.container = await this.database.CreateContainerIfNotExistsAsync(containerId, "/Name", 400);
-            var sqlQueryText = "SELECT * FROM c WHERE c.Name = '"+ name + "'";
+            var sqlQueryText = "SELECT * FROM c WHERE c.Name = '" + name + "'";
 
 
             QueryDefinition queryDefinition = new QueryDefinition(sqlQueryText);
@@ -160,12 +302,12 @@ namespace CosmoDBLibrary
         /// <param name="partitionKeyValue"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public async Task DeleteItemAsync(string partitionKeyValue,string Id)
+        public async Task DeleteItemAsync(string partitionKeyValue, string Id)
         {
             this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions() { ApplicationName = "CosmosDBDotnetQuickstart" });
             this.database = await this.cosmosClient.CreateDatabaseIfNotExistsAsync(databaseId);
             this.container = await this.database.CreateContainerIfNotExistsAsync(containerId, "/Name", 400);
-           // partitionKeyValue = "Diyan";
+            // partitionKeyValue = "Diyan";
             // Id = "Diyan.1";
 
             // Delete an item. Note we must provide the partition key value and id of the item to delete
@@ -206,12 +348,11 @@ namespace CosmoDBLibrary
             return obj;
         }
 
-
-
-
-
-
-
-
     }
+    #endregion
+
+
+
+
+
 }
